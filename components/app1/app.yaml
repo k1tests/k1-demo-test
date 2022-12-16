@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name:  my-app-01
+  name:  my-app-01-a
   namespace:  default
 spec:
   containers:
@@ -10,3 +10,29 @@ spec:
       name: k1-ready
       command: ["tail"]
       args: ["-f","/dev/null"]  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  my-app-01-b
+  namespace:  default
+spec:
+  containers:
+# Image needs to come from install ECR not github, I believe...
+   -  image: 6zar/k1test:latest
+      name: k1-ready
+      command: ["tail"]
+      args: ["-f","/dev/null"]  
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  my-app-01-c
+  namespace:  default
+spec:
+  containers:
+# Image needs to come from install ECR not github, I believe...
+   -  image: 6zar/k1test:latest
+      name: k1-ready
+      command: ["tail"]
+      args: ["-f","/dev/null"]        
