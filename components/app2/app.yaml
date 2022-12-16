@@ -10,3 +10,20 @@ spec:
       name: k1-ready
       command: ["tail"]
       args: ["-f","/dev/null"]  
+--- 
+apiVersion: k1.kubefirst.io/v1beta1
+kind: Watcher
+metadata:
+  name: wait-app-01
+  namespace: default
+  annotations:
+    argocd.argoproj.io/hook: PreSync    
+spec:
+    exit: 0
+    timeout: 30
+    pods:
+      - name: my-app-01-a
+        namespace:  default
+        phase: Running      
+        apiVersion: v1
+        kind: Pod    
