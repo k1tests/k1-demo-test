@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name:  my-app-01
+  name:  my-app-03
   namespace:  default
 spec:
   containers:

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: recursive-tree-sample-app1
+  name: recursive-tree-sample-app2
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "20"
