@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name:  my-app-01
-  namespace:  my-app
+  namespace:  default
 spec:
   containers:
 # Image needs to come from install ECR not github, I believe...
