@@ -8,7 +8,7 @@ metadata:
 spec: 
   project: default
   source:
-    path: components/app1
+    path: components/app2
     repoURL: https://github.com/6za/k1-watcher-demo.git
     targetRevision: HEAD
     directory:
