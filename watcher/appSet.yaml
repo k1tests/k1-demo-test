@@ -9,16 +9,16 @@ spec:
       elements:
         - name: recursive-tree-sample-app1
           path: components/app1
-          wave: 10      
+          wave: '10'
         - name: recursive-tree-sample-app2
           path: components/app2 
-          wave: 20
+          wave: '20'
         - name: recursive-tree-sample-app3
           path: components/app3 
-          wave: 30
+          wave: '30'
         - name: recursive-tree-sample-app4
           path: components/app4
-          wave: 40          
+          wave: '40'
   template:
       metadata:
         name: '{{name}}-demo'        
