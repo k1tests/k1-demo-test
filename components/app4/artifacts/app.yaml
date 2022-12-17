@@ -1,0 +1,29 @@
+apiVersion: k1.kubefirst.io/v1beta1
+kind: Watcher
+metadata:
+  name: wait-forever
+  namespace: default
+  annotations:
+    argocd.argoproj.io/hook: PreSync    
+spec:
+    exit: 0
+    timeout: 120
+    pods:
+      - name: my-never-app
+        namespace:  default
+        phase: Running      
+        apiVersion: v1
+        kind: Pod    
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  my-app-04
+  namespace:  default
+spec:
+  containers:
+# Image needs to come from install ECR not github, I believe...
+   -  image: 6zar/k1test:latest
+      name: k1-ready
+      command: ["tail"]
+      args: ["-f","/dev/null"]  
