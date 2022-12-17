@@ -7,16 +7,16 @@ spec:
   generators:
   - list:
       elements:
-        - name: recursive-tree-sample-app1
+        - name: recursive-tree-app1
           path: components/app1
           wave: '10'
-        - name: recursive-tree-sample-app2
+        - name: recursive-tree-app2
           path: components/app2 
           wave: '20'
-        - name: recursive-tree-sample-app3
+        - name: recursive-tree-app3
           path: components/app3 
           wave: '30'
-        - name: recursive-tree-sample-app4
+        - name: recursive-tree-app4
           path: components/app4
           wave: '40'
   template:
