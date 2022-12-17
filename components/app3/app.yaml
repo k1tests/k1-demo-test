@@ -16,7 +16,7 @@ spec:
         kind: Pod    
     jobs:
       - name: run-some-long-action-app2
-        namespace:  default
+        namespace:  argocd
         succeeded: 1
 ---
 apiVersion: v1
