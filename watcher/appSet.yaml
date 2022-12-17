@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: watcher-demo-unfolder
+spec:
+  generators:
+  - list:
+      elements:
+        - name: recursive-tree-sample-app1
+          path: components/app1
+          wave: 10      
+        - name: recursive-tree-sample-app2
+          path: components/app2 
+          wave: 20
+        - name: recursive-tree-sample-app3
+          path: components/app3 
+          wave: 30
+        - name: recursive-tree-sample-app4
+          path: components/app4
+          wave: 40          
+  template:
+      metadata:
+        name: '{{name}}'
+        namespace: argocd
+        annotations:
+          argocd.argoproj.io/sync-wave: '{{wave}}'
+      spec: 
+        project: default
+        source:
+          path: '{{path}}'
+          repoURL: https://github.com/6za/k1-watcher-demo.git
+          targetRevision: HEAD
+          directory:
+            recurse: true # <--- Here
+        destination:
+          server: 'https://kubernetes.default.svc'
+          namespace:  default
+        syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
+            syncOptions:
+              - CreateNamespace=true
+            retry:
+              limit: 5
+              backoff:
+                duration: 5s
+                maxDuration: 5m0s
+                factor: 2  
