@@ -20,8 +20,7 @@ spec:
           wave: 40          
   template:
       metadata:
-        name: '{{name}}'
-        namespace: argocd
+        name: '{{name}}-demo'        
         annotations:
           argocd.argoproj.io/sync-wave: '{{wave}}'
       spec: 
