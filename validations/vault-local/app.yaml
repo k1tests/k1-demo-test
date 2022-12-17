@@ -1,0 +1,42 @@
+apiVersion: k1.kubefirst.io/v1beta1
+kind: Watcher
+metadata:
+  name: wait-vault-local
+  namespace: default
+  annotations:
+    argocd.argoproj.io/hook: PreSync    
+spec:
+    exit: 0
+    timeout: 300
+    pods:
+      - name:  vault-0
+        namespace:  vault
+        phase: Running      
+        apiVersion: v1
+        kind: Pod    
+        labels:
+          app.kubernetes.io/name: vault
+        
+--- 
+# Creates the argo annotation for CRD
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: run-post-vault-ready-job
+  namespace: argocd
+spec:
+  template:
+    spec:
+      serviceAccountName: argocd-server
+      containers:
+      - name: c
+        image: portainer/kubectl-shell:latest
+        command:
+        - /bin/sh
+        - -c
+        - |
+          #Do something          
+          echo "post vault ready action"
+          sleep 30
+      restartPolicy: Never
+  backoffLimit: 1   
