@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: recursive-tree-sample-app4
+  name: recursive-tree-sample-app2
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "30"
+    argocd.argoproj.io/sync-wave: "20"
 spec: 
   project: default
   source:
-    path: components/app4
+    path: components/app2/artifacts
     repoURL: https://github.com/6za/k1-watcher-demo.git
     targetRevision: HEAD
     directory:
